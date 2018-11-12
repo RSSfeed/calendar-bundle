@@ -17,11 +17,8 @@ class CalendarController extends Controller
      */
     public function loadCalendarAction(Request $request)
     {
-        $startDatetime = new \DateTime();
-        $startDatetime = \DateTime::createFromFormat('Y-m-d',$request->get('start'));
-        
-        $endDatetime = new \DateTime();
-        $endDatetime = \DateTime::createFromFormat('Y-m-d',$request->get('end'));
+        $startDatetime = new \DateTime($request->get('start'));
+        $endDatetime = new \DateTime($request->get('end'));
         
         $events = $this->container->get('event_dispatcher')->dispatch(CalendarEvent::CONFIGURE, new CalendarEvent($startDatetime, $endDatetime, $request))->getEvents();
         
@@ -31,7 +28,7 @@ class CalendarController extends Controller
         $return_events = array();
         
         foreach($events as $event) {
-            $return_events[] = $event->toArray();    
+            $return_events[] = $event->toArray();
         }
         
         $response->setContent(json_encode($return_events));
