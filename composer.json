@@ -1,5 +1,5 @@
 {
-    "name": "adesigns/calendar-bundle",
+    "name": "wbx/calendar-bundle",
     "type": "symfony-bundle",
     "description": "This bundle allows you to integrate the jQuery FullCalendar plugin into your Symfony2 application.",
     "keywords": ["calendar", "fullcalendar", "jquery calendar"],
